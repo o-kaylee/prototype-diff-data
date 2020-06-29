@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet">
+    <title>Prototype: Diff Text</title>
+</head>
+<body>
+<h3>Prototype: diff 결과</h3>
+<div>
+    <p th:text="${'Similarity: ' + similarity}"></p>
+    <img th:src="${'data:image/png;base64,' + result}" />
+</div>
+
+</body>
+</html>

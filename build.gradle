@@ -29,7 +29,9 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
 	compile group: 'google-diff-match-patch', name: 'google-diff-match-patch', version: '0.1'
+	compile 'com.github.romankh3:image-comparison:4.2.1'
 }
 
 test {
