@@ -1,6 +1,7 @@
 package dev.sunghyun.prototypediffdata.controller;
 
 import dev.sunghyun.prototypediffdata.resource.ImageDiff;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 
+@Slf4j
 @Controller
 public class ImageDiffController {
     @PostMapping(path = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.TEXT_HTML_VALUE)
     public String getImageDiff(@RequestPart MultipartFile oldImage, @RequestPart MultipartFile newImage, Model model) throws IOException {
+        log.debug("Received two images: " + oldImage.getName() + ", " + newImage.getName());
         ImageDiff imageDiff = new ImageDiff(oldImage, newImage);
 
         double similarity = imageDiff.getSimilarity();
