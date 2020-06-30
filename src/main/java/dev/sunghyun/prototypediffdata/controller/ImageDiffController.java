@@ -1,6 +1,5 @@
 package dev.sunghyun.prototypediffdata.controller;
 
-import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import dev.sunghyun.prototypediffdata.resource.ImageDiff;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

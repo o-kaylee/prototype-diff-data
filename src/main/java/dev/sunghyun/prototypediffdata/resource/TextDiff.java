@@ -1,12 +1,10 @@
 package dev.sunghyun.prototypediffdata.resource;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import name.fraser.neil.plaintext.diff_match_patch;
 
 import java.util.LinkedList;
 
-@Data
 @RequiredArgsConstructor
 public class TextDiff {
     diff_match_patch dmp = new diff_match_patch();

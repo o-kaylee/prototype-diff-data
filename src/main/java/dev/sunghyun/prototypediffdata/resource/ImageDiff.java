@@ -3,7 +3,6 @@ package dev.sunghyun.prototypediffdata.resource;
 import com.github.romankh3.image.comparison.ImageComparison;
 import com.github.romankh3.image.comparison.ImageComparisonUtil;
 import com.github.romankh3.image.comparison.model.ImageComparisonResult;
-import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -11,7 +10,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-@Data
 public class ImageDiff {
     private final BufferedImage expected;
     private final BufferedImage actual;
