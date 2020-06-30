@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype: Diff Text & Image</title>
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+</head>
+<body>
+    <div class="container">
+        <h2>텍스트 비교</h2>
+        <p>두 텍스트들을 비교하여 다른 부분을 찾습니다.</p>
+        <form id="diffTextForm" method="POST" action="/text">
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input name="isSemantic" type="checkbox" class="custom-control-input" id="diffTextMode">
+                    <label class="custom-control-label" for="diffTextMode">
+                        Semantic 모드 켜기
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="oldText">이전 텍스트</label>
+                <textarea name="oldText" class="form-control" id="oldText" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="newText">새로운 텍스트</label>
+                <textarea name="newText" class="form-control" id="newText" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">제출</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>이미지 비교</h2>
+        <p>두 이미지를 비교하여 다른 부분을 찾습니다.</p>
+        <form id="diffImageForm" method="POST" action="/image" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="expectedImage">이전 이미지</label>
+                <input name="oldImage" type="file" class="form-control-file" id="expectedImage" accept="image/jpg, image/png">
+            </div>
+            <div class="form-group">
+                <label for="actualImage">새로운 이미지</label>
+                <input name="newImage" type="file" class="form-control-file" id="actualImage" accept="image/jpg, image/png">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">제출</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+    <script src="../static/js/app.js" th:href="@{/js/app.js}"></script>
+</body>
+</html>

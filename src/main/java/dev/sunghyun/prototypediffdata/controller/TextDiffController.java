@@ -7,13 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
 public class TextDiffController {
     @PostMapping(path = "/text", produces = MediaType.TEXT_HTML_VALUE)
-    public String getTextDiff(@RequestBody TextDiff textDiff, Model model) {
-        HtmlTextDiff result = textDiff.getHtmlTextDiff();
+    public String getTextDiff(@RequestParam(defaultValue = "false") boolean isSemantic, @RequestParam String oldText, @RequestParam String newText, Model model) {
+        TextDiff textDiff = new TextDiff(oldText, newText);
+        HtmlTextDiff result = textDiff.getHtmlTextDiff(isSemantic);
 
         model.addAttribute("diffText", result);
 

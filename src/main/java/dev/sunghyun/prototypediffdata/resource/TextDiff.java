@@ -20,10 +20,12 @@ public class TextDiff {
         return diff;
     }
 
-    public HtmlTextDiff getHtmlTextDiff() {
+    public HtmlTextDiff getHtmlTextDiff(boolean isSemantic) {
         LinkedList<diff_match_patch.Diff> diffs = this.dmp.diff_main(this.text1, this.text2);
 
-        dmp.diff_cleanupSemantic(diffs);
+        if (isSemantic) {
+            dmp.diff_cleanupSemantic(diffs);
+        }
 
         StringBuilder oldContent = new StringBuilder();
         StringBuilder newContent = new StringBuilder();

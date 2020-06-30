@@ -33,7 +33,7 @@ public class ImageDiff {
     public BufferedImage getDiff() {
         ImageComparison imageComparison = new ImageComparison(expected, actual);
 
-        // TODO: ¼¼¼¼ÇÏ°Ô ¼³Á¤ÇÒ ¼ö ÀÖ´Â Ç×¸ñ: https://romankh3.github.io/image-comparison/#usage
+        // TODO: ì„¸ì„¸í•˜ê²Œ ì„¤ì •í•  ìˆ˜ ìžˆëŠ” í•­ëª©: https://romankh3.github.io/image-comparison/#usage
         ImageComparisonResult imageComparisonResult = imageComparison.compareImages();
 
         return imageComparisonResult.getResult();

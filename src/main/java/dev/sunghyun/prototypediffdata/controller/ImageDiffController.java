@@ -17,13 +17,13 @@ import java.util.Base64;
 @Controller
 public class ImageDiffController {
     @PostMapping(path = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.TEXT_HTML_VALUE)
-    public String getImageDiff(@RequestPart MultipartFile image1, @RequestPart MultipartFile image2, Model model) throws IOException {
-        ImageDiff imageDiff = new ImageDiff(image1, image2);
+    public String getImageDiff(@RequestPart MultipartFile oldImage, @RequestPart MultipartFile newImage, Model model) throws IOException {
+        ImageDiff imageDiff = new ImageDiff(oldImage, newImage);
 
         double similarity = imageDiff.getSimilarity();
         BufferedImage result = imageDiff.getDiff();
 
-        // HTML ·»´õ¸µÇÏ±â À§ÇØ BufferedImageÀ» Base64-encoded stringÀ¸·Î º¯È¯ÇÏ´Â ÀÛ¾÷
+        // HTML ë Œë”ë§í•˜ê¸° ìœ„í•´ BufferedImageì„ Base64-encoded stringìœ¼ë¡œ ë³€í™˜í•˜ëŠ” ì‘ì—…
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         ImageIO.write(result, "png", output);
 
