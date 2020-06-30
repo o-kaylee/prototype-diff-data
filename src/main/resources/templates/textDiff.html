@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet">
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
     <title>Prototype: Diff Text</title>
 </head>
 <body>
     <h3>Prototype: diff 결과</h3>
-    <div th:utext="${diffText.getOldContent()}" style="margin-top: 16px;"></div>
-
-    <div th:utext="${diffText.getNewContent()}" style="margin-top: 16px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col jumbotron" th:utext="${diffText.getOldContent()}" style="margin-right: 4px;"></div>
+            <div class="col jumbotron" th:utext="${diffText.getNewContent()}" style="margin-left: 4px;"></div>
+        </div>
+    </div>
 </body>
 </html>
