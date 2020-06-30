@@ -7,9 +7,8 @@
 </head>
 <body>
     <h3>Prototype: diff 결과</h3>
-    <div th:each="diff : ${diffText}">
-        <span th:classappend="${ diff.operation }" th:text="${ diff.text }"></span>
-    </div>
+    <div th:utext="${diffText.getOldContent()}" style="margin-top: 16px;"></div>
 
+    <div th:utext="${diffText.getNewContent()}" style="margin-top: 16px;"></div>
 </body>
 </html>

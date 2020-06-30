@@ -21,4 +21,33 @@ public class TextDiff {
 
         return diff;
     }
+
+    public HtmlTextDiff getHtmlTextDiff() {
+        LinkedList<diff_match_patch.Diff> diffs = this.dmp.diff_main(this.text1, this.text2);
+
+        dmp.diff_cleanupSemantic(diffs);
+
+        StringBuilder oldContent = new StringBuilder();
+        StringBuilder newContent = new StringBuilder();
+
+        for (diff_match_patch.Diff diff: diffs) {
+            // convert to percent-encoded
+            String text = (diff.text.replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;")
+                    .replace("\n", "<br>"));
+
+            if (diff.operation == diff_match_patch.Operation.DELETE) {
+                oldContent.append("<del style='background:#ffe6e6;'>").append(text).append("</del>");
+            }
+            else if (diff.operation == diff_match_patch.Operation.INSERT) {
+                newContent.append("<ins style='background: #e6ffe6;'>").append(text).append("</ins>");
+            }
+            else {
+                oldContent.append("<span>").append(text).append("</span>");
+                newContent.append("<span>").append(text).append("</span>");
+            }
+        }
+        return new HtmlTextDiff(oldContent.toString(), newContent.toString());
+    }
 }
