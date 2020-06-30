@@ -21,16 +21,16 @@
             </div>
             <div class="form-group">
                 <label for="oldText">이전 텍스트</label>
-                <textarea name="oldText" class="form-control" id="oldText" rows="5"></textarea>
+                <textarea name="oldText" class="form-control" id="oldText" rows="5" th:inline="text">[[${defaultOldText}]]</textarea>
             </div>
             <div class="form-group">
                 <label for="newText">새로운 텍스트</label>
-                <textarea name="newText" class="form-control" id="newText" rows="5"></textarea>
+                <textarea name="newText" class="form-control" id="newText" rows="5" th:inline="text">[[${defaultNewText}]]</textarea>
             </div>
             <button type="submit" class="btn btn-primary mb-2">제출</button>
         </form>
     </div>
-
+    <hr style="margin: 32px 0;"/>
     <div class="container">
         <h2>이미지 비교</h2>
         <p>두 이미지를 비교하여 다른 부분을 찾습니다.</p>
