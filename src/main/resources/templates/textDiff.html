@@ -9,6 +9,9 @@
 <div class="container text-center">
     <h3>Prototype: diff 결과</h3>
     <div class="row">
+        <p th:text="${'Similarity: ' + similarity}"></p>
+    </div>
+    <div class="row">
         <div class="col jumbotron" th:utext="${diffText.getOldContent()}" style="margin-right: 4px;"></div>
         <div class="col jumbotron" th:utext="${diffText.getNewContent()}" style="margin-left: 4px;"></div>
     </div>

@@ -16,6 +16,9 @@ public class TextDiffController {
         TextDiff textDiff = new TextDiff(oldText, newText);
         HtmlTextDiff result = textDiff.getHtmlTextDiff(isSemantic);
 
+        double similarity = textDiff.getSimilarity();
+
+        model.addAttribute("similarity", similarity);
         model.addAttribute("diffText", result);
 
         return "textDiff";
