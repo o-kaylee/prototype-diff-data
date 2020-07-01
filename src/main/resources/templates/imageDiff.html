@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet">
-    <title>Prototype: Diff Text</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <title>Prototype: Diff Image</title>
 </head>
 <body>
-<h3>Prototype: diff 결과</h3>
-<div>
-    <p th:text="${'Similarity: ' + similarity}"></p>
-    <img th:src="${'data:image/png;base64,' + result}" />
+<div class="container text-center">
+    <h3>Prototype: diff 결과</h3>
+    <div class="row">
+        <p th:text="${'Similarity: ' + similarity}"></p>
+    </div>
+    <div class="row">
+        <img th:src="${'data:image/png;base64,' + result}" style="width: 100%;"/>
+    </div>
+    <a href="/" class="btn btn-primary" style="margin-top: 16px;">뒤로</a>
 </div>
-
 </body>
 </html>

@@ -20,7 +20,14 @@ public class ImageDiffController {
     public String getImageDiff(@RequestPart MultipartFile oldImage, @RequestPart MultipartFile newImage, Model model) throws IOException {
         ImageDiff imageDiff = new ImageDiff(oldImage, newImage);
 
-        double similarity = imageDiff.getSimilarity();
+        double similarity;
+        try {
+            similarity = imageDiff.getSimilarity();
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            similarity = 0.0;
+        }
+
         BufferedImage result = imageDiff.getDiff();
 
         // HTML 렌더링하기 위해 BufferedImage을 Base64-encoded string으로 변환하는 작업
