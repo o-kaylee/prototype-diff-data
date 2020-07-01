@@ -18,7 +18,7 @@ public class TextDiffController {
 
         double similarity = textDiff.getSimilarity();
 
-        model.addAttribute("similarity", similarity);
+        model.addAttribute("similarity", Math.round(similarity * 100) / 100.0);
         model.addAttribute("diffText", result);
 
         return "textDiff";

@@ -34,7 +34,7 @@ public class ImageDiffController {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         ImageIO.write(result, "png", output);
 
-        model.addAttribute("similarity", similarity);
+        model.addAttribute("similarity", Math.round(similarity * 100) / 100.0);
         model.addAttribute("result", Base64.getEncoder().encodeToString(output.toByteArray()));
 
         return "imageDiff";

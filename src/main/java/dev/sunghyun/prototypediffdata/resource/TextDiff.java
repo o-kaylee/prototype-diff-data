@@ -23,11 +23,11 @@ public class TextDiff {
     public double getSimilarity() {
         LinkedList<diff_match_patch.Diff> diffs = this.dmp.diff_main(this.text1, this.text2);
 
-        int levenshteinD = dmp.diff_levenshtein(diffs);
+        int levenshteinD = dmp.diff_levenshtein(diffs);  // 편집 거리
         if (levenshteinD == 0) return 100.0;
         int lengthOfLongerText = Math.max(this.text1.length(), this.text2.length());
 
-        return 100.0 - ((double) levenshteinD / (double) lengthOfLongerText) * 100;
+        return 100.0 - ((double) levenshteinD / (double) lengthOfLongerText) * 100.0;
     }
 
     public HtmlTextDiff getHtmlTextDiff(boolean isSemantic) {
