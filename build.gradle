@@ -32,6 +32,7 @@ dependencies {
 
 	compile group: 'google-diff-match-patch', name: 'google-diff-match-patch', version: '0.1'
 	compile 'com.github.romankh3:image-comparison:4.2.1'
+	compile 'org.jsoup:jsoup:1.13.1'
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
