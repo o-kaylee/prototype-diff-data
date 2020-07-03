@@ -8,11 +8,12 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.stream.IntStream;
 
 @Slf4j
 public class PrototypeTranslatorRunner {
     public static void main(String[] args) throws IOException {
-        File input = new File("/Users/a1101400/Workspace/prototype-diff-data/src/main/resources/static/sample/huggies.html");
+        File input = new File("/Users/a1101400/Workspace/prototype-diff-data/src/main/resources/static/sample/bose.html");
 
         Document doc = Jsoup.parse(input, "UTF-8");
         Element rootElement = doc.getElementById("aplus");
@@ -30,16 +31,23 @@ public class PrototypeTranslatorRunner {
         log.debug(elementsWithText.size() + " elements with text have been found.");
         log.debug(elementsWithImage.size() + " elements with image have been found.");
         log.debug(popoverElements.size() + " popover elements have been found.");
-
-        System.out.println(rootElement.outerHtml());
     }
 
     private static Elements getElementsWithText(Elements descriptionElements) {
-        Elements returnValue = new Elements();
+        Elements elementsWithText = new Elements();
 
-        for (Element el: descriptionElements) returnValue.addAll(el.select("h1, h2, h3, h4, h5, h6, p"));
+        // Consider adding `span` on what condition
+        for (Element el: descriptionElements) {
+            Elements selectedElements = el.select("h1, h2, h3, h4, h5, h6, p");
 
-        return returnValue;
+            IntStream.range(0, selectedElements.size()).forEach(idx -> {
+                selectedElements.get(idx).attr("id", "untranslated-" + idx);
+            });
+
+            elementsWithText.addAll(selectedElements);
+        }
+
+        return elementsWithText;
     }
 
     private static Elements getElementsWithImage(Elements descriptionElements) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Prototype: Diff Text & Image</title>
@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+    <h2>HTML 파일 번역</h2>
+    <p>HTML 파일을 입력으로 받아 번역할 수 있는 도구를 엽니다.</p>
+    <form id="translationForm" method="POST" action="/translate" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="htmlFile">HTML 파일</label>
+            <input name="htmlFile" type="file" class="form-control-file" id="htmlFile" accept="text/html">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">제출</button>
+    </form>
+</div>
+<hr style="margin: 32px 0;"/>
 <div class="container">
     <h2>텍스트 비교</h2>
     <p>두 텍스트들을 비교하여 다른 부분을 찾습니다.</p>
@@ -37,16 +49,17 @@
     <p>두 이미지를 비교하여 다른 부분을 찾습니다.</p>
     <form id="diffImageForm" method="POST" action="/image" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="expectedImage">이전 이미지</label>
-            <input name="oldImage" type="file" class="form-control-file" id="expectedImage" accept="image/jpg, image/png">
+            <label for="oldImage">이전 이미지</label>
+            <input name="oldImage" type="file" class="form-control-file" id="oldImage" accept="image/jpg, image/png">
         </div>
         <div class="form-group">
-            <label for="actualImage">새로운 이미지</label>
-            <input name="newImage" type="file" class="form-control-file" id="actualImage" accept="image/jpg, image/png">
+            <label for="newImage">새로운 이미지</label>
+            <input name="newImage" type="file" class="form-control-file" id="newImage" accept="image/jpg, image/png">
         </div>
         <button type="submit" class="btn btn-primary mb-2">제출</button>
     </form>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
