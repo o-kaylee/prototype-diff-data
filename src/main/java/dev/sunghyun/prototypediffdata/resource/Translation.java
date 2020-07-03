@@ -6,10 +6,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Data
 public class Translation {
@@ -46,5 +46,17 @@ public class Translation {
         // TODO: 여기서 DB insert, 리턴은 추출한 string만?
 
         return textIdMap;
+    }
+
+    public ArrayList<String> extractImages() {
+        Elements imageElements = this.sectionElements.select("img");
+
+        // TODO: Image에 ID 매겨야 한다.
+        ArrayList<String> imageSrcs = new ArrayList<>();
+        for (Element e: imageElements) {
+            imageSrcs.add(e.attr("src"));
+        }
+
+        return imageSrcs;
     }
 }

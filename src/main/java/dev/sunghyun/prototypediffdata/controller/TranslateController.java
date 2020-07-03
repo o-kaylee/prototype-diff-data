@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -23,20 +24,24 @@ public class TranslateController{
     public String startTranslation(@RequestPart MultipartFile htmlFile, Model model)  throws IOException {
         InputStream is = htmlFile.getInputStream();
 
-        // fixme
         Document doc = Jsoup.parse(is, "UTF-8", "");
 
+        // Import style and scripts
         Element head = doc.head();
         Elements js = doc.body().getElementsByTag("script");
-
         model.addAttribute("amznStyles", head.outerHtml());
         model.addAttribute("amznScripts", js.outerHtml());
 
         Translation translation = new Translation(doc);
 
+        // Prepare for text translation
         HashMap<String, String> untranslatedText = translation.extractTexts();
         model.addAttribute("previousContent", translation.getRootElement().outerHtml());
         model.addAttribute("untranslatedText", untranslatedText);
+
+        // TODO: Prepare for image translation
+        ArrayList<String> untranslatedImageSrcs = translation.extractImages();
+        model.addAttribute("untranslatedImageSrcs", untranslatedImageSrcs);
 
         return "translation";
     }

@@ -10,14 +10,28 @@
 
 <div class="container">
     <h2>번역 필요 (자동 추출됨)</h2>
+
     <form id="translateForm">
+        <h4>텍스트</h4>
         <div class="form-group" th:each="text: ${untranslatedText}">
             <label th:for="${'textarea_' + text.getKey()}" th:text="${text.getValue()}"></label>
             <textarea class="form-control"
                       th:name="${'textarea_' + text.getKey()}" th:id="${'textarea_' + text.getKey()}" th:text="${text.getValue()}">
             </textarea>
         </div>
+        <h4>이미지</h4>
+
+        <div class="row" th:each="image: ${untranslatedImageSrcs}">
+            <img th:src="${image}">
+            <div class="form-group">
+                <label>이미지 번역 (번역할 문구가 없다면 빈 칸으로 제출해주세요.)</label>
+                <textarea class="form-control" style="margin-top: 8px;"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2">제출</button>
     </form>
+
 </div>
 
 <div class="container">
