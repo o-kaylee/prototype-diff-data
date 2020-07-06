@@ -34,14 +34,18 @@ public class TranslateController{
 
         Translation translation = new Translation(doc);
 
-        // Prepare for text translation
+        // Translation - Text
         HashMap<String, String> untranslatedText = translation.extractTexts();
         model.addAttribute("previousContent", translation.getRootElement().outerHtml());
         model.addAttribute("untranslatedText", untranslatedText);
 
-        // TODO: Prepare for image translation
+        // Translation - Image
         ArrayList<String> untranslatedImageSrcs = translation.extractImages();
         model.addAttribute("untranslatedImageSrcs", untranslatedImageSrcs);
+
+        // TODO: Prepare for popover text translation
+        HashMap<String, String> untranslatedPopoverTexts = translation.extractPopoverTexts();
+        model.addAttribute("untranslatedPopoverTexts", untranslatedPopoverTexts);
 
         return "translation";
     }
