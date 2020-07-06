@@ -92,19 +92,8 @@ public class Translation {
 
                 elementNumericId++;
             }
-
-//            if (!popoverTextElements.get(i).text().isEmpty()) {
-//                // Declare and define id
-//                String elementId = "untranslatedPopoverText-" + i;
-//
-//                // Assign id to elements
-//                popoverTextElements.get(i).attr("id", elementId);
-//
-//                textIdMap.put(elementId, textElements.get(i).text());
-//            }
         }
 
         return textIdMap;
     }
 }
-
