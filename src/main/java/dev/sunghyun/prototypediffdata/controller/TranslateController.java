@@ -28,7 +28,7 @@ public class TranslateController{
 
         // Import style and scripts
         Element head = doc.head();
-        Elements js = doc.body().getElementsByTag("script");
+        Elements js = doc.body().select("script[type=text/javascript]");
         model.addAttribute("amznStyles", head.outerHtml());
         model.addAttribute("amznScripts", js.outerHtml());
 
