@@ -8,7 +8,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,16 +59,17 @@ public class Translation {
         return textIdMap;
     }
 
-    public ArrayList<String> extractImages() {
+    public HashMap<String, String> extractImages() {
         Elements imageElements = this.sectionElements.select("img");
 
-        // TODO: Image에 ID 매겨야 한다.
-        ArrayList<String> imageSrcs = new ArrayList<>();
-        for (Element e: imageElements) {
-            imageSrcs.add(e.attr("src"));
+        HashMap<String, String> imageIdMap = new HashMap<>();
+
+        for (int i = 0; i < imageElements.size(); i++) {
+            String elementId = "untranslatedImage-" + i;
+            imageIdMap.put(elementId, imageElements.get(i).attr("src"));
         }
 
-        return imageSrcs;
+        return imageIdMap;
     }
 
     public HashMap<String, String> extractPopoverTexts() {

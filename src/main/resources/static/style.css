@@ -1,0 +1,13 @@
+div.image-translation {
+    border: 3px black solid;
+    padding: 1px;
+    margin-bottom: 8px;
+}
+
+div#image-translation {
+    padding: 8px;
+}
+
+div#imageTranslationSection > div.accordion {
+    margin-bottom: 16px;
+}

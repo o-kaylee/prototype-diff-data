@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -40,7 +39,7 @@ public class TranslateController{
         model.addAttribute("untranslatedText", untranslatedText);
 
         // Translation - Image
-        ArrayList<String> untranslatedImageSrcs = translation.extractImages();
+        HashMap<String, String> untranslatedImageSrcs = translation.extractImages();
         model.addAttribute("untranslatedImageSrcs", untranslatedImageSrcs);
 
         // TODO: Prepare for popover text translation
